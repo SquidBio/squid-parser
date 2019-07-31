@@ -18,7 +18,7 @@ def lower(height=41):
     commands = ['G1 Z{} F3600'.format(height)]
     return flatten(commands)
 
-def lift(height=96):
+def lift(height=98):
     commands = ['G1 Z{} F3600'.format(height)]
     return flatten(commands)
 
@@ -33,6 +33,10 @@ def get(thing):
     commands = [lift(50), goto(thing), lower(), lift()]
     return flatten(commands)
 
+def detip():
+    commands = [lift(), goto('tipstop'), lift(109), lift()]
+    return flatten(commands)
+
 known_commands = {
     'home': home,
     'push': push,
@@ -40,5 +44,6 @@ known_commands = {
     'lower': lower,
     'raise': lift,
     'goto': goto,
-    'get' : get
+    'get' : get,
+    'detip': detip
 }
