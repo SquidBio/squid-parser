@@ -14,7 +14,7 @@ def pull():
     commands = ['G1 E-45 F3600']
     return flatten(commands)
 
-def lower(height=41):
+def lower(height=40):
     commands = ['G1 Z{} F3600'.format(height)]
     return flatten(commands)
 
@@ -30,7 +30,7 @@ def goto(thing):
     return flatten(commands)
 
 def get(thing):
-    commands = [lift(50), goto(thing), lower(), lift()]
+    commands = [lift(50), goto(thing), lower(), lift(43), lower(), lift()]
     return flatten(commands)
 
 def detip():
